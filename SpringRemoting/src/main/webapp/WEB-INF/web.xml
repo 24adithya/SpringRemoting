@@ -2,11 +2,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-	version="3.0">
+	version="3.0" metadata-complete="true">
 	<display-name>Spring HTTP Invoker Sample</display-name>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/META-INF/spring/app-context-annotation-data-transactions-hibernate-home-xml.xml</param-value>
+		<param-value>/WEB-INF/spring/app-context-annotation-data-transactions-hibernate-home-xml.xml</param-value>
 	</context-param>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -20,7 +20,7 @@
 		</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>contactExporter</servlet-name>
+		<servlet-name>serviceExporter</servlet-name>
 		<url-pattern>/remoting/SpringService</url-pattern>
 	</servlet-mapping>
 </web-app>
