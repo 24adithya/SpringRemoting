@@ -14,13 +14,14 @@
 	<!-- Difference between dispatcher servlet and http request handler servler. In short, a simpler version is the http one -->
 	<!-- https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/context/support/HttpRequestHandlerServlet.html -->
 	<servlet>
-		<servlet-name>serviceExporter</servlet-name>
+		<servlet-name>remoting</servlet-name>
 		<servlet-class>
-			org.springframework.web.context.support.HttpRequestHandlerServlet
+			org.springframework.web.servlet.DispatcherServlet
 		</servlet-class>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>serviceExporter</servlet-name>
-		<url-pattern>/remoting/SpringService</url-pattern>
+		<servlet-name>remoting</servlet-name>
+		<url-pattern>/remoting/*</url-pattern>
 	</servlet-mapping>
 </web-app>

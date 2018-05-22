@@ -20,7 +20,7 @@ public class SpringServiceImpl implements SpringService {
 				Class clazz = Class.forName(serviceRequestDTO.getServiceName());
 				Object obj = clazz.newInstance();
 				Method methodToInvoke = clazz.getDeclaredMethod(serviceRequestDTO.getServiceMethod(), ServiceRequestDTO.class);
-				methodToInvoke.invoke(obj, serviceRequestDTO);
+				methodToInvoke.invoke(obj, serviceRequestDTO.getParameters());
 			} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | ClassNotFoundException | InstantiationException e) {
 				LOG.error(e.getMessage());
 			}
