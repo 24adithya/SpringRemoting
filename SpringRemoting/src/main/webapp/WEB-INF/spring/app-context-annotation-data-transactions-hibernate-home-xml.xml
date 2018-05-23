@@ -20,20 +20,11 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 	<!-- <jdbc:embedded-database id="dataSource" type="H2"> <jdbc:script location="classpath:META-INF/sql/schema.sql" 
 		/> <jdbc:script location="classpath:META-INF/sql/test-data.sql" /> </jdbc:embedded-database> -->
 
+	<!-- Uncomment the following 2 beans only if you are sure :) -->
+	<!-- Uncomment when you need to use the exporter approach as opposed to MVC dispatcher approach -->
+	
 	<!-- <bean name="springService" class="org.pack.services.impl.SpringServiceImpl"></bean>
-
-	<bean name="/SpringService"
-		class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
-		<property name="service" ref="springService" />
-		<property name="serviceInterface" value="org.pack.services.SpringService" />
-	</bean> -->
-
-	<!-- URL Mapping to forward to controller... -->
-	<!-- <bean id="remoteMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> 
-		<property name="mappings"> <props> <prop key="serviceExporter">serviceExporter</prop> 
-		</props> </property> </bean> -->
-
-	<!-- <bean name="serviceExporter"
+	<bean name="serviceExporter"
 		class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
 		<property name="service" ref="springService" />
 		<property name="serviceInterface" value="org.pack.services.SpringService" />

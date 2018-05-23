@@ -13,6 +13,9 @@
 	</listener>
 	<!-- Difference between dispatcher servlet and http request handler servler. In short, a simpler version is the http one -->
 	<!-- https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/context/support/HttpRequestHandlerServlet.html -->
+	
+	<!-- Approach 1 - using dispatcher servlet and mvc pattern  - works. Refer remoting-servlet.xml. 
+	     Note: It will refer the service in the remoting-servlet.xml -->
 	<servlet>
 		<servlet-name>remoting</servlet-name>
 		<servlet-class>
@@ -24,4 +27,16 @@
 		<servlet-name>remoting</servlet-name>
 		<url-pattern>/remoting/*</url-pattern>
 	</servlet-mapping>
+	
+	<!-- Approach 1 - using simple http handler approach and HttpInvokerServiceExporter (where bean name matches with the exporter defined as the servlet name) - works. Refer xml in contextConfigLocation -->
+	<!-- <servlet>
+		<servlet-name>serviceExporter</servlet-name>
+		<servlet-class>
+			org.springframework.web.context.support.HttpRequestHandlerServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>serviceExporter</servlet-name>
+		<url-pattern>/remoting/SpringService</url-pattern>
+	</servlet-mapping> -->
 </web-app>
