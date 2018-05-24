@@ -20,15 +20,28 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 	<!-- <jdbc:embedded-database id="dataSource" type="H2"> <jdbc:script location="classpath:META-INF/sql/schema.sql" 
 		/> <jdbc:script location="classpath:META-INF/sql/test-data.sql" /> </jdbc:embedded-database> -->
 
+	<!-- HTTP Invoker exporter -->
 	<!-- Uncomment the following 2 beans only if you are sure :) -->
-	<!-- Uncomment when you need to use the exporter approach as opposed to MVC dispatcher approach -->
-	
-	<!-- <bean name="springService" class="org.pack.services.impl.SpringServiceImpl"></bean>
-	<bean name="serviceExporter"
-		class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
+	<!-- Uncomment when you need to use the exporter approach as opposed to 
+		MVC dispatcher approach -->
+
+	<!-- <bean name="springService" class="org.pack.services.impl.SpringServiceImpl"></bean> 
+		<bean name="serviceExporter" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter"> 
+		<property name="service" ref="springService" /> <property name="serviceInterface" 
+		value="org.pack.services.SpringService" /> </bean> -->
+
+	<!-- RMI invoker exporter -->
+	<!-- Uncomment the following 2 beans only if you are sure :) -->
+	<!-- Uncomment when you need to use the RMI exporter approach as opposed 
+		to MVC dispatcher or simple HTTP exporter approach -->
+	<bean name="springService" class="org.pack.services.impl.SpringServiceImpl"></bean>
+	<bean name="serviceExporter" class="org.springframework.remoting.rmi.RmiServiceExporter">
 		<property name="service" ref="springService" />
 		<property name="serviceInterface" value="org.pack.services.SpringService" />
-	</bean> -->
+		<property name="serviceName" value="SpringService"></property>
+		<!-- defaults to 1099 -->
+		<property name="registryPort" value="1199" />
+	</bean>
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
